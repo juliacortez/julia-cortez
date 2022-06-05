@@ -6,9 +6,15 @@ import GlobalStateContext from './GlobalStateContext'
 function GlobalState(props) {
 
     const users = useRequestData([], `${BASE_URL}/clients`)
+    const [filterData, setFilterData] = useState('')
+    const [showUserBy, setShowUserBy] = useState('all')
 
     const data = {
-        users
+        users,
+        filterData,
+        setFilterData,
+        showUserBy, 
+        setShowUserBy
     }
 
     return(

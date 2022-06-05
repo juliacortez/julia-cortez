@@ -1,22 +1,23 @@
-import { useContext } from "react"
-import DataTable from "../../components/Table/Table"
-import { BASE_URL } from "../../constants/url"
-import GlobalStateContext from "../../GlobalState/GlobalStateContext"
-import useRequestData from "../../hooks/useRequestData"
+import DataTable from "../../components/Table/DataTable"
+import Filter from "../../components/Filter/Filter"
+import { HomeContainer, HomeHeader } from "./styled"
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function HomePage(){
 
-    const { users } = useContext(GlobalStateContext)
-
-    console.log(users)
-
     return(
-        <div>
-            <DataTable
-                data = {users} 
-            />
-        </div>
+        <HomeContainer>
+            <HomeHeader>
+                <Filter />
+                <Button variant="contained" startIcon={<AddCircleOutlineRoundedIcon/>}>
+                    Cadastrar Novo Usuário
+                </Button>
+            </HomeHeader>
+            <DataTable />
+        </HomeContainer>
     )
 }
 
