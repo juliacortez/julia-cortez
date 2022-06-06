@@ -19,6 +19,7 @@ function Filter(){
         <FilterContainer>
             <div>
             <TextField
+                name="userSearch"
                 placeholder='Pesquisar por nome, empresa, telefone ou e-mail'
                 value={filterData}
                 onChange={updateInput}
