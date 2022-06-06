@@ -4,17 +4,13 @@ import { HomeContainer, HomeHeader } from "./styled";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Button from "@mui/material/Button";
 import { Modal } from "@mui/material";
-import CreateUserPage from "../../Modals/CreateUser/CreateUser";
+import CreateUser from "../../Modals/CreateUser/CreateUser";
 import { useContext, useEffect, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
+import EditUser from "../../Modals/EditUser/EditUser";
 
 function HomePage() {
-  const [openModal, setOpenModal] = useState(false);
-  const {users} = useContext(GlobalStateContext)
-
-  useEffect(() => {
-      handleCloseModal()
-  }, [users])
+  const {users, openModal, setOpenModal} = useContext(GlobalStateContext)
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -43,7 +39,7 @@ function HomePage() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <CreateUserPage
+        <CreateUser
             onClose={handleCloseModal}
         />
       </Modal>

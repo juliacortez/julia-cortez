@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, {useState} from 'react'
 import { BASE_URL } from '../constants/url'
 import useRequestData from '../hooks/useRequestData'
@@ -8,14 +9,16 @@ function GlobalState(props) {
     const users = useRequestData([], BASE_URL)
     const [filterData, setFilterData] = useState('')
     const [showUserBy, setShowUserBy] = useState('all')
-
+    const [openModal, setOpenModal] = useState(false);
 
     const data = {
         users,
         filterData,
         setFilterData,
         showUserBy, 
-        setShowUserBy
+        setShowUserBy,
+        openModal,
+        setOpenModal
     }
 
     return(

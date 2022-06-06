@@ -1,12 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TableContainer } from "./styled";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import IconButton from "@mui/material/IconButton";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
+import { Modal } from "@mui/material";
+import EditUser from "../../Modals/EditUser/EditUser";
+import axios from "axios";
+import { BASE_URL } from "../../constants/url";
 
 function DataTable() {
-  const { users, filterData, showUserBy } = useContext(GlobalStateContext);
+  const { users, filterData, showUserBy, openModal, setOpenModal, } = useContext(GlobalStateContext);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+
+  const deleteClient = (id) => {
+    axios.delete(`${BASE_URL}/${id}`, {data: id} )
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
 
   return (
     <div>
@@ -51,11 +71,13 @@ function DataTable() {
                   <td>{user.isActive === true ? "Ativo" : "Inativo"}</td>
                   <td>
                     <IconButton>
-                      <EditRoundedIcon />
+                      <EditRoundedIcon/>
                     </IconButton>
 
                     <IconButton>
-                      <DeleteOutlineRoundedIcon />
+                      <DeleteOutlineRoundedIcon
+                        onClick={() => deleteClient(user.id)}
+                      />
                     </IconButton>
                   </td>
                 </tr>
@@ -63,6 +85,15 @@ function DataTable() {
           </tbody>
         </table>
       </TableContainer>
+      <Modal
+        open={openModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <EditUser
+            
+        />
+      </Modal>
     </div>
   );
 }
