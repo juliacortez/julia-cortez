@@ -1,14 +1,13 @@
 {
   "clients": [
     {
-      "id": "0ac3f57a-4c1c-4875-92fb-b912744886b5",
       "name": "Hurley George",
       "company": "STRALUM",
       "email": "hurleygeorge@stralum.com",
       "phone": "+1 (813) 459-3680",
-      "address": "690 Havens Place, Loma, New Jersey, 2489",
       "note": "bla bla bla",
-      "isActive": false
+      "isActive": false,
+      "id": "0ac3f57a-4c1c-4875-92fb-b912744886b5"
     },
     {
       "id": "72570e07-e123-4f70-bc95-00c76432e3ca",
@@ -36,7 +35,7 @@
       "email": "boyermcintyre@otherside.com",
       "phone": "+1 (891) 480-2571",
       "note": "",
-      "isActive": false,
+      "isActive": true,
       "id": "4b382c63-6612-4d6f-be5c-104a7dd1e89a"
     },
     {
@@ -44,6 +43,7 @@
       "company": "ROCKABYE",
       "email": "johnstonfuller@rockabye.com",
       "phone": "+1 (959) 528-3801",
+      "adress": "Av. Conjuring",
       "note": "",
       "isActive": false,
       "id": "0f6dd3f2-923e-4b54-a92b-7275adc115c9"

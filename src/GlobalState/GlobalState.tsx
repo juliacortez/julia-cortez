@@ -1,16 +1,16 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import { BASE_URL } from '../constants/url'
-import useRequestData from '../hooks/useRequestData'
 import GlobalStateContext from './GlobalStateContext'
 
-function GlobalState(props) {
+function GlobalState(props: any) {
 
     const [usersData, setUsersData] = useState([])
     const [filterData, setFilterData] = useState('')
     const [showUserBy, setShowUserBy] = useState('all')
-    const [getId, setGetId] = useState('')
-
+    const [alert, setAlert] = useState(false)
+    const [alertText, setAlertText] = useState('')
+    const [alertErrorText, setAlertErrorText] = useState('')
 
     const getUsers = () => {
         axios.get(`${BASE_URL}`)
@@ -26,9 +26,12 @@ function GlobalState(props) {
         filterData,
         setFilterData,
         showUserBy, 
+        setShowUserBy,
         usersData,
-        getId,
-        setGetId
+        alertText,
+        setAlertText,
+        setAlert,
+        alert
     }
 
     return(

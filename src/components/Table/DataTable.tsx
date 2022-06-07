@@ -1,20 +1,30 @@
-import React, { useContext, useEffect, useState } from "react";
 import { TableContainer } from "./styled";
-import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
-import EditRoundedIcon from "@mui/icons-material/EditRounded";
-import IconButton from "@mui/material/IconButton";
+import ClientsRows from "../ClientsRows/ClientsRows";
+import { Alert, Button, Stack } from "@mui/material";
+import { useContext, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
-import { Modal } from "@mui/material";
-import EditUser from "../../Modals/EditUser/EditUser";
-import axios from "axios";
-import { BASE_URL } from "../../constants/url";
-import useRequestData from "../../hooks/useRequestData";
-import ClientsRows from '../ClientsRows/ClientsRows'
 
 function DataTable() {
+  const { alert, alertText, setAlert } = useContext(GlobalStateContext);
 
   return (
     <div>
+      {alert && alertText.includes("sucesso") ? (
+        <div>
+            <Alert severity="success" onClose={() => setAlert(false)}>
+          {alertText}
+        </Alert>
+        </div>
+      ) : (
+        <></>
+      )}
+      {alert && alertText === '' ? (
+        <Alert severity="error" onClose={() => setAlert(false)}>
+          <p>Ocorreu um erro</p>
+        </Alert>
+      ) : (
+        <></>
+      )}
       <TableContainer>
         <table>
           <thead>

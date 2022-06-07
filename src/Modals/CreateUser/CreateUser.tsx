@@ -18,10 +18,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useContext } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 
-function CreateUserPage(props) {
+
+function CreateUser(props: any) {
   const createNewId: string = uuid();
 
-  const { setUsersData, handleCreateModal, setControlCreateModal } = useContext(GlobalStateContext)
+  const { setAlert, setAlertText } = useContext(GlobalStateContext)
 
   const [form, handleInputChange, clear] = useForm({
     id: createNewId,
@@ -38,15 +39,16 @@ function CreateUserPage(props) {
     e.preventDefault();
     createUser();
     clear();
-    
   };
 
   const createUser = () => {
     axios
       .post(BASE_URL, form)
       .then((res) => 
-      console.log("deu certo"))
-      .catch((err) => console.log(err))
+        setAlert(true),
+        setAlertText("Cliente cadastrado com sucesso"))
+      .catch((err) => 
+        setAlert(true))
   };
 
   const clearInputs = () => {
@@ -80,7 +82,7 @@ function CreateUserPage(props) {
             />
             <TextField
               name={"company"}
-              value={form.company}
+              value={form.company.toUpperCase()}
               onChange={handleInputChange}
               label={"Empresa"}
               color="secondary"
@@ -131,6 +133,7 @@ function CreateUserPage(props) {
                 value={form.isActive}
                 onChange={handleInputChange}
                 color="secondary"
+                defaultValue={true}
               >
                 <MenuItem value={true}>Ativo</MenuItem>
                 <MenuItem value={false}>Inativo</MenuItem>
@@ -153,4 +156,4 @@ function CreateUserPage(props) {
   );
 }
 
-export default CreateUserPage;
+export default CreateUser;

@@ -5,11 +5,9 @@ import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRou
 import Button from "@mui/material/Button";
 import { Modal } from "@mui/material";
 import CreateUser from "../../Modals/CreateUser/CreateUser";
-import { useContext, useEffect, useState } from "react";
-import GlobalStateContext from "../../GlobalState/GlobalStateContext";
+import { useState } from "react";
 
 function HomePage() {
-  const { usersData } = useContext(GlobalStateContext)
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {

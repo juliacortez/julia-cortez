@@ -1,22 +1,21 @@
 import { IconButton, Modal } from "@mui/material";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 import { BASE_URL } from "../../constants/url";
 import axios from "axios";
 import EditUser from "../../Modals/EditUser/EditUser";
-import useRequestData from "../../hooks/useRequestData";
 
 function ClientsRows() {
-  const { filterData, showUserBy, usersData, getId, setGetId, users } =
+  const { filterData, showUserBy, usersData, setAlert, setAlertText } =
     useContext(GlobalStateContext);
 
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
 
 
-  const handleOpenModal = (id) => {
+  const handleOpenModal = (id: string) => {
     setOpen(true);
     setId(id)
   };
@@ -25,18 +24,23 @@ function ClientsRows() {
     setOpen(false);
   };
 
-  const deleteClient = (id) => {
+  const deleteClient = (id: string) => {
     axios
       .delete(`${BASE_URL}/${id}`, {
         data: id,
       })
-      .then((res) => console.log(res))
-      .catch((err) => alert(err));
+      .then((res) => 
+        setAlert(true),
+        setAlertText("Usuário deletado com sucesso"))
+      .catch((err) => 
+        setAlert(true)
+      );
   };
 
   return (
     <>
       {usersData
+      .sort((a, b) => (a.name < b.name ? -1 : 1))
         .filter((user: any) => {
           return (
             user.name.toLowerCase().includes(filterData.toLowerCase()) ||
@@ -74,10 +78,10 @@ function ClientsRows() {
         ))}
       <Modal
         open={open}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
-        <EditUser close={handleCloseModal} id={id}/>
+        <EditUser 
+            close={handleCloseModal} id={id}
+        />
       </Modal>
     </>
   );
