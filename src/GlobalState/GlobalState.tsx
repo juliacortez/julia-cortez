@@ -11,15 +11,16 @@ function GlobalState(props) {
     const [showUserBy, setShowUserBy] = useState('all')
     const [getId, setGetId] = useState('')
 
+
     const getUsers = () => {
         axios.get(`${BASE_URL}`)
         .then((res) => setUsersData(res.data))
         .catch((err) => console.log(err))
     }
 
-    // const user = useRequestData([], `${BASE_URL}?id=${getId}`)
-
-    getUsers()
+    useEffect(() => {
+        getUsers()
+    }, [usersData])
 
     const data = {
         filterData,

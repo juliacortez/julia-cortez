@@ -12,23 +12,49 @@ import {
 } from "./styled";
 import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
+import useRequestData from "../../hooks/useRequestData";
+import { BASE_URL } from "../../constants/url";
+import axios from "axios";
 
-function EditUser(props) {
+function EditUser({id, close}) {
 
-    const { usersData } = useContext(GlobalStateContext)
+    const [userData, setUserData] = useState({
+        name: "", 
+        company: "",
+        email: "",
+        phone: "",
+        adress: "",
+        note: "",
+        isActive: {}
+    })
+
+    const getUserData = () => {
+        axios.get(`${BASE_URL}?id=${id}`)
+        .then((res) => setUserData(res.data[0]))
+        .catch((err) => console.log(err))
+    }
+
+    useEffect(() => {
+        getUserData()
+    }, [id])
 
 
-  const [form, handleInputChange, clear] = useForm({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    adress: "",
-    note: "",
-    isActive: true,
-  });
+    const form = {
+        name: userData.name,
+        company: userData.company,
+        email: userData.email,
+        phone: userData.phone,
+        adress: userData.adress,
+        note: userData.note,
+        isActive: userData.isActive
+    }
+
+    const handleInputChange = (e: any) => {
+        const {value, name} = e.target
+        setUserData({...form, [name]: value})
+    }
 
   const onSubmitForm = (e: any) => {
     e.preventDefault();
@@ -36,15 +62,10 @@ function EditUser(props) {
   };
 
   const editUser = () => {
-    // axios
-    //   .put(`${BASE_URL}/${props.id}`, form)
-    //   .then((res) => alert("Usuário atualizado com sucesso!"))
-    //   .catch((err) => alert("Ocorreu um erro. Tente novamente."));
-    console.log(form);
-  };
-
-  const clearInputs = () => {
-    clear();
+    axios
+      .put(`${BASE_URL}/${id}`, form)
+      .then((res) => alert("Usuário atualizado com sucesso!"))
+      .catch((err) => alert("Ocorreu um erro. Tente novamente."));
   };
 
   return (
@@ -53,7 +74,7 @@ function EditUser(props) {
         <FormContainer>
           <FormHeader>
             <HeaderButton>
-              <IconButton onClick={props.close}>
+              <IconButton onClick={close}>
                 <CloseIcon />
               </IconButton>
             </HeaderButton>
@@ -66,55 +87,57 @@ function EditUser(props) {
             <InputContainer>
               <TextField
                 name={"name"}
-                value={form.name}
-                onChange={handleInputChange}
+                label={"name"}
                 required
                 color="secondary"
                 margin="normal"
+                value={form.name}
+                onChange={handleInputChange}
               />
               <TextField
                 name={"company"}
-                value={form.company}
-                onChange={handleInputChange}
+                label={"Empresa"}
                 color="secondary"
                 margin="normal"
+                value={form.company}
+                onChange={handleInputChange}
               />
               <TextField
                 name={"email"}
-                value={form.email}
-                onChange={handleInputChange}
                 label={"E-mail"}
                 required
                 type="email"
                 color="secondary"
                 margin="normal"
+                value={form.email}
+                onChange={handleInputChange}
               />
               <TextField
                 name={"phone"}
-                value={form.phone}
-                onChange={handleInputChange}
                 label={"Telefone"}
                 color="secondary"
                 margin="normal"
+                value={form.phone}
+                onChange={handleInputChange}
               />
               <TextField
                 name={"adress"}
-                value={form.adress}
-                onChange={handleInputChange}
                 label={"Endereço"}
                 color="secondary"
                 margin="normal"
+                value={form.adress}
+                onChange={handleInputChange}
                 fullWidth
               />
               <TextField
                 name={"note"}
-                value={""}
-                onChange={handleInputChange}
                 label={"Nota"}
                 multiline
                 rows={4}
                 color="secondary"
                 margin="normal"
+                value={form.note}
+                onChange={handleInputChange}
                 fullWidth
               />
               <FormFotter>
@@ -122,9 +145,9 @@ function EditUser(props) {
                   sx={{ minWidth: 120 }}
                   name={"isActive"}
                   defaultValue="true"
+                  color="secondary"
                   value={form.isActive}
                   onChange={handleInputChange}
-                  color="secondary"
                 >
                   <MenuItem 
                     value={true}
@@ -147,7 +170,6 @@ function EditUser(props) {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={clearInputs}
                   >
                     Cancelar
                   </Button>

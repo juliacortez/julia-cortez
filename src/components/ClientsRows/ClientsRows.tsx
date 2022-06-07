@@ -6,16 +6,19 @@ import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 import { BASE_URL } from "../../constants/url";
 import axios from "axios";
 import EditUser from "../../Modals/EditUser/EditUser";
+import useRequestData from "../../hooks/useRequestData";
 
 function ClientsRows() {
-  const { filterData, showUserBy, usersData, getId, setGetId } =
+  const { filterData, showUserBy, usersData, getId, setGetId, users } =
     useContext(GlobalStateContext);
 
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
 
-  const handleOpenModal = () => {
+
+  const handleOpenModal = (id) => {
     setOpen(true);
+    setId(id)
   };
 
   const handleCloseModal = () => {
@@ -59,7 +62,7 @@ function ClientsRows() {
             <td>{user.email}</td>
             <td>{user.isActive === true ? "Ativo" : "Inativo"}</td>
             <td>
-              <IconButton onClick={() => console.log(user.id)}>
+              <IconButton onClick={() => handleOpenModal(user.id)}>
                 <EditRoundedIcon />
               </IconButton>
 
@@ -74,7 +77,7 @@ function ClientsRows() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <EditUser close={handleCloseModal} />
+        <EditUser close={handleCloseModal} id={id}/>
       </Modal>
     </>
   );
