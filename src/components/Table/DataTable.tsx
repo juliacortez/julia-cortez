@@ -3,6 +3,7 @@ import ClientsRows from "../ClientsRows/ClientsRows";
 import { Alert, Button, Stack } from "@mui/material";
 import { useContext, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
+import Pagination from "../Pagination/Pagination";
 
 function DataTable() {
   const { alert, alertText, setAlert } = useContext(GlobalStateContext);
@@ -11,14 +12,14 @@ function DataTable() {
     <div>
       {alert && alertText.includes("sucesso") ? (
         <div>
-            <Alert severity="success" onClose={() => setAlert(false)}>
-          {alertText}
-        </Alert>
+          <Alert severity="success" onClose={() => setAlert(false)}>
+            {alertText}
+          </Alert>
         </div>
       ) : (
         <></>
       )}
-      {alert && alertText === '' ? (
+      {alert && alertText === "" ? (
         <Alert severity="error" onClose={() => setAlert(false)}>
           <p>Ocorreu um erro</p>
         </Alert>
@@ -41,6 +42,7 @@ function DataTable() {
           </tbody>
         </table>
       </TableContainer>
+      <Pagination />
     </div>
   );
 }

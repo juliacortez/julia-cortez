@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import { BASE_URL } from '../constants/url'
 import GlobalStateContext from './GlobalStateContext'
 
@@ -10,12 +10,22 @@ function GlobalState(props: any) {
     const [showUserBy, setShowUserBy] = useState('all')
     const [alert, setAlert] = useState(false)
     const [alertText, setAlertText] = useState('')
-    const [alertErrorText, setAlertErrorText] = useState('')
+    const [currentPage, setCurrentPage] = useState(1)
+    const [usersPerPage, setUsersPerPage] = useState(5)
+
+    const indexOfLastClient = currentPage * usersPerPage
+    const indexOfFirstClient = indexOfLastClient - usersPerPage
+
+    const currentClients = usersData.slice(indexOfFirstClient, indexOfLastClient)
+
+    const totalPages = Math.ceil(usersData.length / usersPerPage)
+
+    const totalClients = usersData.length
 
     const getUsers = () => {
         axios.get(`${BASE_URL}`)
         .then((res) => setUsersData(res.data))
-        .catch((err) => console.log(err))
+        .catch((err) => alert("Ocorreu um erro."))
     }
 
     useEffect(() => {
@@ -31,7 +41,12 @@ function GlobalState(props: any) {
         alertText,
         setAlertText,
         setAlert,
-        alert
+        alert,
+        totalPages,
+        currentClients,
+        currentPage,
+        setCurrentPage,
+        totalClients
     }
 
     return(

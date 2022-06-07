@@ -1,14 +1,14 @@
 import { IconButton, Modal } from "@mui/material";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 import { BASE_URL } from "../../constants/url";
 import axios from "axios";
 import EditUser from "../../Modals/EditUser/EditUser";
 
 function ClientsRows() {
-  const { filterData, showUserBy, usersData, setAlert, setAlertText } =
+  const { filterData, showUserBy, usersData, setAlert, setAlertText, currentClients } =
     useContext(GlobalStateContext);
 
   const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ function ClientsRows() {
 
   return (
     <>
-      {usersData
+      {currentClients
       .sort((a, b) => (a.name < b.name ? -1 : 1))
         .filter((user: any) => {
           return (

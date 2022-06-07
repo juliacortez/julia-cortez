@@ -1,23 +1,13 @@
 {
   "clients": [
     {
-      "name": "Hurley George",
-      "company": "STRALUM",
-      "email": "hurleygeorge@stralum.com",
-      "phone": "+1 (813) 459-3680",
-      "note": "bla bla bla",
-      "isActive": false,
-      "id": "0ac3f57a-4c1c-4875-92fb-b912744886b5"
-    },
-    {
-      "id": "72570e07-e123-4f70-bc95-00c76432e3ca",
       "name": "Trudy Beasley",
-      "company": "AUTOGRATE",
+      "company": "AUTOGRATED",
       "email": "trudybeasley@autograte.com",
       "phone": "+1 (932) 550-3183",
-      "address": "860 Reeve Place, Norfolk, Mississippi, 1259",
       "note": "",
-      "isActive": true
+      "isActive": false,
+      "id": "72570e07-e123-4f70-bc95-00c76432e3ca"
     },
     {
       "id": "b4d8225b-9e18-4413-a759-af89909d67b2",
@@ -47,6 +37,66 @@
       "note": "",
       "isActive": false,
       "id": "0f6dd3f2-923e-4b54-a92b-7275adc115c9"
+    },
+    {
+      "id": "52ed5d3b-29f2-4299-a090-07ad61cf316c",
+      "name": "Judy Arner",
+      "company": "JUS S/A",
+      "email": "judyarner@jus.com",
+      "phone": "123 123 123 123",
+      "adress": "Av. California, 123",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "aa019941-e6d2-4a6a-9416-3698e4e1366b",
+      "name": "Chris Boyler",
+      "company": "ARMADOM",
+      "email": "chrisboyler@armadom.com",
+      "phone": "345 332 333 ",
+      "adress": "45th street",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "8ad8dd83-9b67-4783-86cd-d2ddf6a3d323",
+      "name": "Robert Payn",
+      "company": "INSURANCE S.A",
+      "email": "robertpayn@insurance.com",
+      "phone": "234 765 887",
+      "adress": "Drem St. 33",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "61359b18-b854-4f6e-9dba-4252860eea67",
+      "name": "Drew Scott",
+      "company": "PROPERTY BROTHERs",
+      "email": "dscot@property.com",
+      "phone": "202 292830",
+      "adress": "",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "b718ca5d-1a70-42d3-9bcd-381d2787c61a",
+      "name": "Kyle Romder",
+      "company": "YATk",
+      "email": "kyle@yatk.com",
+      "phone": "2992 30030",
+      "adress": "",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "0f979c87-ab02-4ca7-bef0-a5f4a1744a7d",
+      "name": "Samuel Jones",
+      "company": "HYDRAl",
+      "email": "samuel@hydral",
+      "phone": "0398 29298",
+      "adress": "",
+      "note": "",
+      "isActive": true
     }
   ]
 }

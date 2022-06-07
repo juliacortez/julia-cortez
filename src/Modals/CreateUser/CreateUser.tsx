@@ -8,7 +8,7 @@ import {
   FormHeader,
   FormTitle,
   HeaderButton,
-  InputContainer
+  InputContainer,
 } from "./styled";
 import Button from "@mui/material/Button";
 import { v4 as uuid } from "uuid";
@@ -18,11 +18,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useContext } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 
-
 function CreateUser(props: any) {
   const createNewId: string = uuid();
 
-  const { setAlert, setAlertText } = useContext(GlobalStateContext)
+  const { setAlert, setAlertText } = useContext(GlobalStateContext);
 
   const [form, handleInputChange, clear] = useForm({
     id: createNewId,
@@ -44,11 +43,11 @@ function CreateUser(props: any) {
   const createUser = () => {
     axios
       .post(BASE_URL, form)
-      .then((res) => 
-        setAlert(true),
-        setAlertText("Cliente cadastrado com sucesso"))
-      .catch((err) => 
-        setAlert(true))
+      .then(
+        (res) => setAlert(true),
+        setAlertText("Cliente cadastrado com sucesso")
+      )
+      .catch((err) => setAlert(true));
   };
 
   const clearInputs = () => {
@@ -139,16 +138,19 @@ function CreateUser(props: any) {
                 <MenuItem value={false}>Inativo</MenuItem>
               </Select>
               <FormButtons>
-              <Button color="secondary" type="submit" variant="contained">
-                Criar
-              </Button>
+                <Button color="secondary" type="submit" variant="contained">
+                  Criar
+                </Button>
 
-              <Button variant="contained" color="primary" onClick={clearInputs}>
-                Cancelar
-              </Button>
-            </FormButtons>
-              </FormFotter>
-            
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={clearInputs}
+                >
+                  Cancelar
+                </Button>
+              </FormButtons>
+            </FormFotter>
           </InputContainer>
         </form>
       </FormContainer>
