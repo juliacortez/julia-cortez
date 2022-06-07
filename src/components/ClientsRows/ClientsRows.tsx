@@ -39,7 +39,7 @@ function ClientsRows() {
 
   return (
     <>
-      {currentClients
+      {usersData
       .sort((a, b) => (a.name < b.name ? -1 : 1))
         .filter((user: any) => {
           return (
@@ -59,7 +59,7 @@ function ClientsRows() {
           }
         })
         .map((user: any) => (
-          <tr key={user.id}>
+        <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.company}</td>
             <td>{user.phone}</td>

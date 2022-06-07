@@ -39,16 +39,6 @@
       "id": "0f6dd3f2-923e-4b54-a92b-7275adc115c9"
     },
     {
-      "id": "52ed5d3b-29f2-4299-a090-07ad61cf316c",
-      "name": "Judy Arner",
-      "company": "JUS S/A",
-      "email": "judyarner@jus.com",
-      "phone": "123 123 123 123",
-      "adress": "Av. California, 123",
-      "note": "",
-      "isActive": true
-    },
-    {
       "id": "aa019941-e6d2-4a6a-9416-3698e4e1366b",
       "name": "Chris Boyler",
       "company": "ARMADOM",
@@ -69,14 +59,14 @@
       "isActive": true
     },
     {
-      "id": "61359b18-b854-4f6e-9dba-4252860eea67",
       "name": "Drew Scott",
-      "company": "PROPERTY BROTHERs",
+      "company": "PROPERTY BROTHERS",
       "email": "dscot@property.com",
       "phone": "202 292830",
       "adress": "",
       "note": "",
-      "isActive": true
+      "isActive": true,
+      "id": "61359b18-b854-4f6e-9dba-4252860eea67"
     },
     {
       "id": "b718ca5d-1a70-42d3-9bcd-381d2787c61a",
@@ -97,6 +87,26 @@
       "adress": "",
       "note": "",
       "isActive": true
+    },
+    {
+      "id": "028e5e5b-9492-4957-88d5-83770837be53",
+      "name": "Anne Marie",
+      "company": "COSMETICS BRAWN",
+      "email": "anne@cosmeticsb.com",
+      "phone": "+ 33 12937 2828",
+      "adress": "",
+      "note": "Good employee",
+      "isActive": true
+    },
+    {
+      "id": "b9edae98-d3f1-4eeb-848a-fc4b5f8684df",
+      "name": "Josh Harper",
+      "company": "AUTOSAFe",
+      "email": "josh@autosafe.com",
+      "phone": "22 3449 2223",
+      "adress": "",
+      "note": "",
+      "isActive": false
     }
   ]
 }

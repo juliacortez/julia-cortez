@@ -1,9 +1,9 @@
-import { TableContainer } from "./styled";
 import ClientsRows from "../ClientsRows/ClientsRows";
-import { Alert, Button, Stack } from "@mui/material";
+import { Alert, Button, Stack, Table } from "@mui/material";
 import { useContext, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 import Pagination from "../Pagination/Pagination";
+import { TableContainer } from "./styled";
 
 function DataTable() {
   const { alert, alertText, setAlert } = useContext(GlobalStateContext);
@@ -28,23 +28,19 @@ function DataTable() {
       )}
       <TableContainer>
         <table>
-          <thead>
             <tr>
               <th>Nome</th>
               <th>Empresa</th>
               <th>Telefone</th>
               <th>E-mail</th>
               <th>Status</th>
+              <th>Opções</th>
             </tr>
-          </thead>
-          <tbody>
             <ClientsRows />
-          </tbody>
-        </table>
+          </table>
       </TableContainer>
       <Pagination />
-    </div>
-  );
-}
+      </div>
+  )}
 
 export default DataTable;

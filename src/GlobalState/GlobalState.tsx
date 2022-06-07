@@ -11,7 +11,7 @@ function GlobalState(props: any) {
     const [alert, setAlert] = useState(false)
     const [alertText, setAlertText] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
-    const [usersPerPage, setUsersPerPage] = useState(5)
+    const [usersPerPage] = useState(5)
 
     const indexOfLastClient = currentPage * usersPerPage
     const indexOfFirstClient = indexOfLastClient - usersPerPage
@@ -28,9 +28,7 @@ function GlobalState(props: any) {
         .catch((err) => alert("Ocorreu um erro."))
     }
 
-    useEffect(() => {
-        getUsers()
-    }, [usersData])
+    getUsers()
 
     const data = {
         filterData,
