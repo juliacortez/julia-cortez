@@ -12,3 +12,4 @@ export const HomeHeader = styled.div`
     justify-content: space-between;
     padding-bottom: 2rem;
 `
+

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const CreateUserModal = styled.div`
-    padding-top: 10vh;
+    padding-top: 10px;
 `
 
 export const FormHeader = styled.div`
@@ -17,7 +17,7 @@ export const HeaderButton = styled.div`
 export const FormTitle = styled.div`
     text-align: center;
     font-size: 1.4rem;
-    margin-top: -30px;
+    margin-top: -60px;
 `
 
 export const FormContainer = styled.div`
@@ -36,15 +36,18 @@ export const InputContainer = styled.div`
     align-items: center;
 ` 
 
-export const FormSelect = styled.div`
-    width: 100%;
-    padding-top: 10px;
-`
-
 export const FormButtons = styled.div`
     display: flex;
     justify-content: space-between;
     width: 250px;
     margin: 0 auto;
-    padding-top: 25px;
+`
+
+export const FormFotter = styled.div`
+    padding-top: 20px;
+    width: 100%;
+    heigth: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `

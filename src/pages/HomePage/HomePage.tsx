@@ -7,10 +7,10 @@ import { Modal } from "@mui/material";
 import CreateUser from "../../Modals/CreateUser/CreateUser";
 import { useContext, useEffect, useState } from "react";
 import GlobalStateContext from "../../GlobalState/GlobalStateContext";
-import EditUser from "../../Modals/EditUser/EditUser";
 
 function HomePage() {
-  const {users, openModal, setOpenModal} = useContext(GlobalStateContext)
+  const { usersData } = useContext(GlobalStateContext)
+  const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -38,6 +38,7 @@ function HomePage() {
         open={openModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className="modal"
       >
         <CreateUser
             onClose={handleCloseModal}

@@ -1,24 +1,33 @@
 import axios from 'axios'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { BASE_URL } from '../constants/url'
 import useRequestData from '../hooks/useRequestData'
 import GlobalStateContext from './GlobalStateContext'
 
 function GlobalState(props) {
 
-    const users = useRequestData([], BASE_URL)
+    const [usersData, setUsersData] = useState([])
     const [filterData, setFilterData] = useState('')
     const [showUserBy, setShowUserBy] = useState('all')
-    const [openModal, setOpenModal] = useState(false);
+    const [getId, setGetId] = useState('')
+
+    const getUsers = () => {
+        axios.get(`${BASE_URL}`)
+        .then((res) => setUsersData(res.data))
+        .catch((err) => console.log(err))
+    }
+
+    // const user = useRequestData([], `${BASE_URL}?id=${getId}`)
+
+    getUsers()
 
     const data = {
-        users,
         filterData,
         setFilterData,
         showUserBy, 
-        setShowUserBy,
-        openModal,
-        setOpenModal
+        usersData,
+        getId,
+        setGetId
     }
 
     return(

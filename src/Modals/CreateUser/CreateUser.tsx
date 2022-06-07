@@ -1,19 +1,30 @@
 import { IconButton, MenuItem, Select, TextField } from "@mui/material";
 import useForm from "../../hooks/useForm";
-import { CreateUserModal, FormButtons, FormContainer, FormHeader, FormSelect, FormTitle, HeaderButton, InputContainer } from "./styled";
+import {
+  CreateUserModal,
+  FormButtons,
+  FormContainer,
+  FormFotter,
+  FormHeader,
+  FormTitle,
+  HeaderButton,
+  InputContainer
+} from "./styled";
 import Button from "@mui/material/Button";
 import { v4 as uuid } from "uuid";
 import { BASE_URL } from "../../constants/url";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
+import { useContext } from "react";
+import GlobalStateContext from "../../GlobalState/GlobalStateContext";
 
 function CreateUserPage(props) {
+  const createNewId: string = uuid();
 
-  const generateId: string = uuid();
+  const { setUsersData, handleCreateModal, setControlCreateModal } = useContext(GlobalStateContext)
 
   const [form, handleInputChange, clear] = useForm({
-    id: generateId,
+    id: createNewId,
     name: "",
     company: "",
     email: "",
@@ -27,13 +38,15 @@ function CreateUserPage(props) {
     e.preventDefault();
     createUser();
     clear();
+    
   };
 
   const createUser = () => {
     axios
       .post(BASE_URL, form)
-      .then((res) => alert("Usuário cadastrado com sucesso!"))
-      .catch((err) => alert("Ocorreu um erro. Tente novamente."));
+      .then((res) => 
+      console.log("deu certo"))
+      .catch((err) => console.log(err))
   };
 
   const clearInputs = () => {
@@ -43,14 +56,17 @@ function CreateUserPage(props) {
   return (
     <CreateUserModal>
       <FormContainer>
-          <FormHeader>
-              <HeaderButton>
-          <IconButton>
-                <CloseIcon onClick={props.onClose} />
-              </IconButton>
-              </HeaderButton>
-              <FormTitle><h3>Dados do Cliente</h3><hr /></FormTitle>
-              </FormHeader>
+        <FormHeader>
+          <HeaderButton>
+            <IconButton onClick={props.onClose}>
+              <CloseIcon />
+            </IconButton>
+          </HeaderButton>
+          <FormTitle>
+            <h3>Dados do Cliente</h3>
+            <hr />
+          </FormTitle>
+        </FormHeader>
         <form onSubmit={onSubmitForm}>
           <InputContainer>
             <TextField
@@ -108,19 +124,18 @@ function CreateUserPage(props) {
               margin="normal"
               fullWidth
             />
-            <FormSelect>
-            <Select
-              sx={{ minWidth: 120 }}
-              name={"isActive"}
-              value={form.isActive}
-              onChange={handleInputChange}
-              color="secondary"
-            >
-              <MenuItem value={true}>Ativo</MenuItem>
-              <MenuItem value={false}>Inativo</MenuItem>
-            </Select>
-            </FormSelect>
-            <FormButtons>
+            <FormFotter>
+              <Select
+                sx={{ minWidth: 120 }}
+                name={"isActive"}
+                value={form.isActive}
+                onChange={handleInputChange}
+                color="secondary"
+              >
+                <MenuItem value={true}>Ativo</MenuItem>
+                <MenuItem value={false}>Inativo</MenuItem>
+              </Select>
+              <FormButtons>
               <Button color="secondary" type="submit" variant="contained">
                 Criar
               </Button>
@@ -129,6 +144,8 @@ function CreateUserPage(props) {
                 Cancelar
               </Button>
             </FormButtons>
+              </FormFotter>
+            
           </InputContainer>
         </form>
       </FormContainer>
