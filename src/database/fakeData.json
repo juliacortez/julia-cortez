@@ -1,27 +1,16 @@
 {
   "clients": [
     {
-      "guid": "0ac3f57a-4c1c-4875-92fb-b912744886b5",
-      "name": "Hurley George",
-      "company": "STRALUM",
-      "email": "hurleygeorge@stralum.com",
-      "phone": "+1 (813) 459-3680",
-      "address": "690 Havens Place, Loma, New Jersey, 2489",
-      "note": "bla bla bla",
-      "isActive": false
-    },
-    {
-      "guid": "72570e07-e123-4f70-bc95-00c76432e3ca",
       "name": "Trudy Beasley",
-      "company": "AUTOGRATE",
+      "company": "AUTOGRATED",
       "email": "trudybeasley@autograte.com",
       "phone": "+1 (932) 550-3183",
-      "address": "860 Reeve Place, Norfolk, Mississippi, 1259",
       "note": "",
-      "isActive": true
+      "isActive": false,
+      "id": "72570e07-e123-4f70-bc95-00c76432e3ca"
     },
     {
-      "guid": "b4d8225b-9e18-4413-a759-af89909d67b2",
+      "id": "b4d8225b-9e18-4413-a759-af89909d67b2",
       "name": "Middleton Kemp",
       "company": "SLAMBDA",
       "email": "middletonkemp@slambda.com",
@@ -31,24 +20,93 @@
       "isActive": false
     },
     {
-      "guid": "4b382c63-6612-4d6f-be5c-104a7dd1e89a",
       "name": "Boyer Mcintyre",
       "company": "OTHERSIDE",
       "email": "boyermcintyre@otherside.com",
       "phone": "+1 (891) 480-2571",
-      "address": "874 Albemarle Road, Greensburg, Nebraska, 1065",
       "note": "",
-      "isActive": true
+      "isActive": true,
+      "id": "4b382c63-6612-4d6f-be5c-104a7dd1e89a"
     },
     {
-      "guid": "0f6dd3f2-923e-4b54-a92b-7275adc115c9",
       "name": "Johnston Fuller",
       "company": "ROCKABYE",
       "email": "johnstonfuller@rockabye.com",
       "phone": "+1 (959) 528-3801",
-      "address": "595 Kimball Street, Comptche, Delaware, 8300",
+      "adress": "Av. Conjuring",
+      "note": "",
+      "isActive": false,
+      "id": "0f6dd3f2-923e-4b54-a92b-7275adc115c9"
+    },
+    {
+      "id": "aa019941-e6d2-4a6a-9416-3698e4e1366b",
+      "name": "Chris Boyler",
+      "company": "ARMADOM",
+      "email": "chrisboyler@armadom.com",
+      "phone": "345 332 333 ",
+      "adress": "45th street",
       "note": "",
       "isActive": true
+    },
+    {
+      "id": "8ad8dd83-9b67-4783-86cd-d2ddf6a3d323",
+      "name": "Robert Payn",
+      "company": "INSURANCE S.A",
+      "email": "robertpayn@insurance.com",
+      "phone": "234 765 887",
+      "adress": "Drem St. 33",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "name": "Drew Scott",
+      "company": "PROPERTY BROTHERS",
+      "email": "dscot@property.com",
+      "phone": "202 292830",
+      "adress": "",
+      "note": "",
+      "isActive": true,
+      "id": "61359b18-b854-4f6e-9dba-4252860eea67"
+    },
+    {
+      "id": "b718ca5d-1a70-42d3-9bcd-381d2787c61a",
+      "name": "Kyle Romder",
+      "company": "YATk",
+      "email": "kyle@yatk.com",
+      "phone": "2992 30030",
+      "adress": "",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "0f979c87-ab02-4ca7-bef0-a5f4a1744a7d",
+      "name": "Samuel Jones",
+      "company": "HYDRAl",
+      "email": "samuel@hydral",
+      "phone": "0398 29298",
+      "adress": "",
+      "note": "",
+      "isActive": true
+    },
+    {
+      "id": "028e5e5b-9492-4957-88d5-83770837be53",
+      "name": "Anne Marie",
+      "company": "COSMETICS BRAWN",
+      "email": "anne@cosmeticsb.com",
+      "phone": "+ 33 12937 2828",
+      "adress": "",
+      "note": "Good employee",
+      "isActive": true
+    },
+    {
+      "id": "b9edae98-d3f1-4eeb-848a-fc4b5f8684df",
+      "name": "Josh Harper",
+      "company": "AUTOSAFe",
+      "email": "josh@autosafe.com",
+      "phone": "22 3449 2223",
+      "adress": "",
+      "note": "",
+      "isActive": false
     }
   ]
 }
